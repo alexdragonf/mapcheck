@@ -1,0 +1,41 @@
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3">
+            <div class="row">
+                <label for="typeahead-street">Улица:</label>
+                <input #street id="typeahead-street"  type="text" class="form-control"
+                [(ngModel)]="model"
+                [ngbTypeahead]="search"
+                [inputFormatter]="formatter"
+                [resultFormatter]="formatter"
+                [editable]='false'
+                (ngModelChange)=loadHouses($event)/>
+            </div>
+            <div class="row">
+                <div class="table-responsive" style="height: 80vh;">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <td>Дом №</td>
+                                <td>Долгота</td>
+                                <td>Широта</td>
+                            </tr>
+                        </thead>
+                        <tbody >
+                            <tr *ngFor="let house of houses">
+                                <td><a href="#" (click)="onHouseClick(house.house)">{{house.house}}</a></td>
+                                <td>{{house.lat}}</td>
+                                <td>{{house.lon}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+<hr>
+<pre>Model: {{ model | json }}</pre>
+      </div>
+      <div class="col-md-9">
+        <mapcheck-map-window [markers]="markers" ></mapcheck-map-window>
+      </div>
+    </div>
+  </div>

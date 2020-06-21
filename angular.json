@@ -23,9 +23,17 @@
             "aot": true,
             "assets": [
               "apps/map-check/src/favicon.ico",
-              "apps/map-check/src/assets"
+              "apps/map-check/src/assets",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/leaflet/dist/images",
+                "output": "leaflet/"
+              }
             ],
-            "styles": ["apps/map-check/src/styles.scss"],
+            "styles": [
+              "apps/map-check/src/styles.scss",
+              "./node_modules/leaflet/dist/leaflet.css"
+            ],
             "scripts": []
           },
           "configurations": {
