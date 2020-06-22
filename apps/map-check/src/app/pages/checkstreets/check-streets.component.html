@@ -1,9 +1,10 @@
 <div class="container-fluid">
     <div class="row">
       <div class="col-md-3">
+          <pre></pre>
             <div class="row">
-                <label for="typeahead-street">Улица:</label>
-                <input #street id="typeahead-street"  type="text" class="form-control"
+                <!-- <label for="typeahead-street">Улица:</label> -->
+                <input #street id="typeahead-street"  placeholder="Введите улицу" type="text" class="form-control"
                 [(ngModel)]="model"
                 [ngbTypeahead]="search"
                 [inputFormatter]="formatter"
@@ -13,8 +14,8 @@
             </div>
             <div class="row">
                 <div class="table-responsive" style="height: 80vh;">
-                    <table class="table table-striped">
-                        <thead>
+                    <table class="table table-sm">
+                        <thead class="thead-dark">
                             <tr>
                                 <td>Дом №</td>
                                 <td>Долгота</td>
@@ -22,8 +23,9 @@
                             </tr>
                         </thead>
                         <tbody >
-                            <tr *ngFor="let house of houses">
-                                <td><a href="#" (click)="onHouseClick(house.house)">{{house.house}}</a></td>
+                            <tr *ngFor="let house of houses; let i=index">
+                                <td><button class="btn btn-link" (click)="onHouseClick(i)">{{house.house}}</button></td>
+                                <!-- <td><a href="" (click)="onHouseClick(house.house)">{{house.house}}</a></td> -->
                                 <td>{{house.lat}}</td>
                                 <td>{{house.lon}}</td>
                             </tr>
@@ -35,7 +37,12 @@
 <pre>Model: {{ model | json }}</pre>
       </div>
       <div class="col-md-9">
-        <mapcheck-map-window [markers]="markers" ></mapcheck-map-window>
+        <mapcheck-map-window #map
+            [markers]="markers"
+            [centerMap]="centerMap" 
+            [(zoomMap)]="zoomMap"
+        >
+        </mapcheck-map-window>
       </div>
     </div>
   </div>

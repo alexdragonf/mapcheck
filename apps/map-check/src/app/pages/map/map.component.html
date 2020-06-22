@@ -4,9 +4,11 @@
       [leafletOptions]="mapOptions"
       [(leafletCenter)]="centerMap"
       [(leafletZoom)]="zoomMap"
-      [leafletMarkerCluster]="markers" 
-      [leafletMarkerClusterOptions]="markerClusterOptions" 
+      [leafletLayers]="markers"
+      (leafletMapReady)="onMapReady($event)"
       >
     </div>
+    <!-- [leafletMarkerCluster]="markers" 
+    [leafletMarkerClusterOptions]="markerClusterOptions"  -->
     <!-- [leafletMarkerCluster]="markerClusterData"  -->
 </div>
