@@ -1,0 +1,50 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3">
+            <input #FileSelectInputDialog type="file" hidden (change)="onFileInputChange($event)">
+            <pre></pre>
+            <div class="row">
+                <button class="btn btn-primary" (click)="loadfile()">
+                    <fa-icon [icon]="fileUploadIcon"></fa-icon>
+                </button>
+                <button class="btn btn-danger">
+                    <fa-icon [icon]="trashAltIcon"></fa-icon>
+                </button>
+            </div>
+            <div class="row">
+                <ngx-datatable style="height: 90vh; width: 100%" 
+                    [rows]="districts" 
+                    [columnMode]="'force'"
+                    [scrollbarV]="true"
+                    [loadingIndicator]="'Загрузка'"
+                    > 
+                    <ngx-datatable-column
+                        [width]="30"
+                        [resizeable]="false"
+                        [sortable]="false"
+                        prop="visible"
+                        >
+                        <ng-template ngx-datatable-cell-template let-value="value" let-row=row>
+                            <input type="checkbox" [checked]="value" (change)="onVisibleChange(row.index)">
+                        </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column
+                    [width]="180"
+                    [resizeable]="false"
+                    [sortable]="false"
+                    prop="name"
+                    >
+                     <!-- <ng-template ngx-datatable-cell-template let-value="">{{value}}</ng-template> -->
+                </ngx-datatable-column>
+            </ngx-datatable>
+            </div>
+        </div>
+        <div class="col-9">
+            <mapcheck-map-window
+                [layers]="getZones()"
+            ></mapcheck-map-window>
+        </div>
+    </div>
+</div>
+
+

@@ -1,9 +1,12 @@
-import { HouseEntity } from './entities/house.entity';
 import { StreetService } from './services';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { StreetController, HouseController } from './controllers';
-import { StreetEntity } from './entities';
+import {
+  StreetController,
+  HouseController,
+  DistrictController,
+} from './controllers';
+import { StreetEntity, HouseEntity, DistrictEntity } from './entities';
 
 @Module({
   imports: [
@@ -16,10 +19,10 @@ import { StreetEntity } from './entities';
       database: 'geoscan_dev',
       synchronize: false,
       logging: true,
-      entities: [StreetEntity, HouseEntity],
+      entities: [StreetEntity, HouseEntity, DistrictEntity],
     }),
   ],
-  controllers: [StreetController, HouseController],
+  controllers: [StreetController, HouseController, DistrictController],
   providers: [StreetService],
 })
 export class AppModule {}

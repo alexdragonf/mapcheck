@@ -1,5 +1,5 @@
 import { MapComponent } from './../map/map.component';
-import { IStreet, IHouse } from '@mapcheck/api-interfaces';
+import { StreetInterface, HouseInterface } from '@mapcheck/api-interfaces';
 import { HttpClient } from '@angular/common/http';
 import {
   Component,
@@ -24,9 +24,9 @@ import { Marker, Icon , LatLng, latLngBounds, Map, LatLngBounds, bounds} from 'l
   styleUrls: ['./check-streets.component.scss'],
 })
 export class CheckStreetsComponent implements OnInit, AfterViewInit {
-  private streets: IStreet[];
-  houses: IHouse[];
-  public model: IStreet;
+  private streets: StreetInterface[];
+  houses: HouseInterface[];
+  public model: StreetInterface;
   public markers: Marker[] = [];
   public centerMap: LatLng = new LatLng(47.994024, 37.801556);
   public zoomMap = 12;
@@ -34,7 +34,7 @@ export class CheckStreetsComponent implements OnInit, AfterViewInit {
 
   constructor(private http: HttpClient) {}
 
-  formatter = (street: IStreet) => street.fullName;
+  formatter = (street: StreetInterface) => street.fullName;
 
   search = (text$: Observable<string>) =>
     text$.pipe(
@@ -48,10 +48,10 @@ export class CheckStreetsComponent implements OnInit, AfterViewInit {
       )
     );
 
-  loadHouses(event: IStreet) {
+  loadHouses(event: StreetInterface) {
     if (event) {
       this.http
-        .get<IHouse[]>(`api/house?street-id=${event.id}`)
+        .get<HouseInterface[]>(`api/house?street-id=${event.id}`)
         .subscribe(this.setHouses)
     }
   };
@@ -92,7 +92,7 @@ onHouseClick(i: number) {
 
   ngOnInit(): void {
     this.http
-      .get<IStreet[]>('api/street')
+      .get<StreetInterface[]>('api/street')
       .subscribe((streets) => (this.streets = streets));
   }
 

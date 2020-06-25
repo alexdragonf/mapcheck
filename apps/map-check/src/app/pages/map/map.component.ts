@@ -49,7 +49,7 @@ export class MapComponent implements OnInit, OnChanges {
     crs: CRS.EPSG3395,
   };
   // 37.801682	47.991914
-  @Input() markers: Marker[] = [];
+  @Input() layers: Layer[] = [];
   @Input() centerMap: LatLng = new LatLng(47.994024, 37.801556);
   @Input() zoomMap = 12;
   map: Map;

@@ -1,13 +1,14 @@
+import { GeoJSON } from "geojson";
 export interface Message {
   message: string;
 }
 
-export interface IStreet {
+export interface StreetInterface {
   id: number,
   fullName: string
 }
 
-export interface IHouse {
+export interface HouseInterface {
   id: number,
   streetId: number,
   house: string,
@@ -15,4 +16,14 @@ export interface IHouse {
   lon:number,
   zone: number,
   district: number
+}
+
+export interface DistrictInterface {
+  id: number,
+  name: string,
+  geojson: GeoJSON.Feature,
+  parentId: number,
+  districtType: number
+  polygon: GeoJSON.Polygon,
+  comment: string
 }

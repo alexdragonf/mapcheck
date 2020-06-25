@@ -1,10 +1,10 @@
-import { IHouse } from '@mapcheck/api-interfaces';
+import { HouseInterface } from '@mapcheck/api-interfaces';
 import {Entity, PrimaryColumn, Column, BaseEntity} from "typeorm";
 
 @Entity({
     name: 'coords'
 })
-export class HouseEntity  extends BaseEntity implements IHouse   {
+export class HouseEntity  extends BaseEntity implements HouseInterface   {
     
     @PrimaryColumn({
         name: 'id'

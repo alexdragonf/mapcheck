@@ -1,0 +1,47 @@
+{
+    "type": "FeatureCollection",
+    "metadata": {
+        "name": "Без названия",
+        "creator": "Yandex Map Constructor"
+    },
+    "features": [
+        {
+            "type": "Feature",
+            "id": 0,
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            37.78430921316524,
+                            48.04866825858558
+                        ],
+                        [
+                            37.7709196257629,
+                            47.98670641002706
+                        ],
+                        [
+                            37.86155683279416,
+                            47.98739784745394
+                        ],
+                        [
+                            37.85949689627072,
+                            48.05004945318569
+                        ],
+                        [
+                            37.78430921316524,
+                            48.04866825858558
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "fill": "#ed4543",
+                "fill-opacity": 0.6,
+                "stroke": "#ed4543",
+                "stroke-width": "5",
+                "stroke-opacity": 0.9
+            }
+        }
+    ]
+}
