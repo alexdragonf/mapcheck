@@ -71,7 +71,8 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "map-check:build",
-            "proxyConfig": "apps/map-check/proxy.conf.json"
+            "proxyConfig": "apps/map-check/proxy.conf.json",
+            "host":"0.0.0.0"
           },
           "configurations": {
             "production": {

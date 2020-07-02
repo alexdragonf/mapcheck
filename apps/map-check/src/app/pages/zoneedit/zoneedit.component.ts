@@ -35,7 +35,7 @@ export class ZoneEditComponent implements OnInit {
 
   ngOnInit(): void { //TODO: ADD Service 'DistrictService'
     this.http
-    .get<DistrictInterface[]>('/api/district?district-type=2')
+    .get<DistrictInterface[]>('/api/district?district-type=')
     .subscribe(this.addZones);
   }
 

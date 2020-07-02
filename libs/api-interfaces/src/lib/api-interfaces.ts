@@ -1,4 +1,4 @@
-import { GeoJSON } from "geojson";
+import { GeoJSON, Polygon } from "geojson";
 export interface Message {
   message: string;
 }
@@ -21,7 +21,7 @@ export interface HouseInterface {
 export interface DistrictInterface {
   id: number,
   name: string,
-  geojson: GeoJSON.Feature,
+  geojson: GeoJSON.Feature<Polygon>,
   parentId: number,
   districtType: number
   polygon: GeoJSON.Polygon,

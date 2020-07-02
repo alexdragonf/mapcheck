@@ -1,0 +1,40 @@
+GET 10.43.0.17:3333/api/district?id=1
+
+###
+
+POST 10.43.0.17:3333/api/district
+Content-Type: application/json
+
+[
+  {
+    "name": "NEW",
+    "geojson": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            37.5241453,
+            47.940612
+          ],
+          [
+            37.5244036,
+            47.9404647
+          ],
+          [
+            37.5247685,
+            47.9402567
+          ],
+           [
+            37.5241453,
+            47.940612
+          ]
+        ]
+      ]
+    },
+    "parentId": null,
+    "districtType": 1,
+    "polygon":  ""
+    ,
+     "comment": null
+  }
+]
