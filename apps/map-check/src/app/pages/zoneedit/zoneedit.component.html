@@ -7,8 +7,14 @@
                 <button class="btn btn-primary" (click)="loadfile()">
                     <fa-icon [icon]="fileUploadIcon"></fa-icon>
                 </button>
-                <button class="btn btn-danger">
+                <button class="btn btn-danger" (click)="onDelete()">
                     <fa-icon [icon]="trashAltIcon"></fa-icon>
+                </button>
+                <button class="btn btn-info" (click)="onPaste()">
+                    <fa-icon [icon]="pasteIcon"></fa-icon>
+                </button>
+                <button class="btn btn-info" (click)="onSave()">
+                    <fa-icon [icon]="saveIcon"></fa-icon>
                 </button>
             </div>
             <div class="row">
