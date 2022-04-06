@@ -25,5 +25,6 @@ export interface DistrictInterface {
   parentId: number,
   districtType: number
   polygon: GeoJSON.Polygon,
+  zone: number,
   comment: string
 }

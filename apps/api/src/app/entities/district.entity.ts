@@ -1,16 +1,52 @@
+import { Map } from 'leaflet';
 import { DistrictInterface } from '@mapcheck/api-interfaces';
+<<<<<<< HEAD
 import {Entity, PrimaryColumn, Column, BaseEntity, ValueTransformer} from "typeorm";
 // import  * as wkx  from "wkx";
 import { Polygon, Feature } from "geojson";
+=======
+import {
+  Entity,
+  PrimaryColumn,
+  Column,
+  BaseEntity,
+  ValueTransformer,
+} from 'typeorm';
+// import { Polygon, Feature } from "geojson";
+>>>>>>> 46ab34a6c6f6302e75fdacbde3e5aab6ee3e20f8
 
 class GeoJSONFeatureTransformer implements ValueTransformer {
-    to(value: GeoJSON.Feature): string  { 
-        return JSON.stringify(value)
-    }
+  to(value: GeoJSON.Geometry): string {
+    return JSON.stringify(value);
+  }
 
-    from (value: string): GeoJSON.Feature {
-        return JSON.parse(value)
-    }
+  from(value: string): GeoJSON.Geometry {
+    console.log(value);
+
+    return JSON.parse(value);
+  }
+}
+
+class PolygonTransformer implements ValueTransformer {
+  to(value: GeoJSON.Polygon) {
+    return value.coordinates[0]
+      .map((x) => `(${x[0]},${x[1]}),`)
+      .reduce((s, x) => s.concat(x),'(')
+      .slice(0,-1)
+      .concat(')');
+  }
+
+  from(value: string) {
+    return {
+      type: 'Polygon',
+      coordinates: [
+        value
+          .slice(1,-1)
+          .split('),(')
+          .map((x) => [x.split(',')[0], x.split(',')[1]]),
+      ],
+    };
+  }
 }
 
 class PolygonTransformer implements ValueTransformer {
@@ -49,8 +85,9 @@ class PolygonTransformer implements ValueTransformer {
 }
 
 @Entity({
-    name: 'districts'
+  name: 'districts',
 })
+<<<<<<< HEAD
 export class DistrictEntity  extends BaseEntity implements DistrictInterface   {
     @PrimaryColumn()
     id: number;
@@ -86,4 +123,41 @@ export class DistrictEntity  extends BaseEntity implements DistrictInterface   {
     @Column()
     comment: string
 }
+=======
+export class DistrictEntity extends BaseEntity implements DistrictInterface {
+  @PrimaryColumn()
+  id: number;
 
+  @Column()
+  name: string;
+>>>>>>> 46ab34a6c6f6302e75fdacbde3e5aab6ee3e20f8
+
+  @Column({
+    // transformer: new GeoJSONFeatureTransformer(),
+    type: 'text',
+  })
+  geojson: GeoJSON.Feature;
+
+  @Column({
+    name: 'parent_id',
+  })
+  parentId: number;
+
+  @Column({
+    name: 'district_type',
+  })
+  districtType: number;
+
+  @Column({
+    type: 'polygon',
+    spatialFeatureType: 'Polygon',
+    transformer: new PolygonTransformer(),
+  })
+  polygon: GeoJSON.Polygon;
+
+  @Column()
+  zone: number;
+
+  @Column()
+  comment: string;
+}

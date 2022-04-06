@@ -70,6 +70,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
+            "host":"0.0.0.0",
+            "port":80,
             "browserTarget": "map-check:build",
             "proxyConfig": "apps/map-check/proxy.conf.json",
             "host":"0.0.0.0"

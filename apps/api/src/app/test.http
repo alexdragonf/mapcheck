@@ -1,0 +1,74 @@
+
+GET localhost:3333/api/district?id=22
+###
+POST localhost:3333/api/district HTTP/1,1
+?id=1
+Content-Type: application/json
+
+[
+    {
+        "name": "test",
+        "geojson": {
+            "type": "Polygon",
+            "coordinates": [
+                [
+                    [
+                        37.5241453,
+                        47.940612
+                    ],
+                    [
+                        37.5244036,
+                        47.9404647
+                    ],
+                    [
+                        37.5247685,
+                        47.9402567
+                    ],
+                    [
+                        37.5241453,
+                        47.940612
+                    ]
+                ]
+            ],
+            "properties": {
+                "id": 1
+            }
+        },
+        "parentId": null,
+        "districtType": 1,
+        "comment": null,
+        "polygon": {
+            "type": "Polygon",
+            "coordinates": [
+                [
+                    [
+                        37.5241453,
+                        47.940612
+                    ],
+                    [
+                        37.5244036,
+                        47.9404647
+                    ],
+                    [
+                        37.5247685,
+                        47.9402567
+                    ],
+                    [
+                        37.5241453,
+                        47.940612
+                    ]
+                ]
+            ]
+        }
+    }
+]
+###
+
+DELETE localhost:3333/api/district HTTP/1.1
+Content-Type: application/json
+
+[20,21,22]
+
+###
+
+GET localhost:3333/api/street HTTP/1.1
