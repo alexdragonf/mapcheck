@@ -58,6 +58,7 @@
     "bootstrap": "^4.4.0",
     "leaflet": "^1.6.0",
     "leaflet.markercluster": "^1.4.1",
+    "ng-config-module": "^7.0.1",
     "pg": "^8.2.1",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^6.5.5",

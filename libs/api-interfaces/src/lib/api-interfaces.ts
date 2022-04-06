@@ -25,6 +25,10 @@ export interface DistrictInterface {
   parentId: number,
   districtType: number
   polygon: GeoJSON.Polygon,
+<<<<<<< Updated upstream
   zone: number,
+=======
+  // zone: number,
+>>>>>>> Stashed changes
   comment: string
 }

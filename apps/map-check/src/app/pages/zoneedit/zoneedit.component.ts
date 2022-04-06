@@ -47,18 +47,24 @@ export class ZoneEditComponent implements OnInit {
     private districtService: DistrictService
   ) {}
 
+<<<<<<< Updated upstream
 <<<<<<< HEAD
   ngOnInit(): void { //TODO: ADD Service 'DistrictService'
     this.http
     .get<DistrictInterface[]>('/api/district?district-type=')
     .subscribe(this.addZones);
 =======
+=======
+>>>>>>> Stashed changes
   ngOnInit(): void {
     //TODO: ADD Service 'DistrictService'
     // this.http
     // .get<DistrictInterface[]>('/api/district?district-type=2')
     this.districtService.getDistrictsByType(2).subscribe(this.addZones);
+<<<<<<< Updated upstream
 >>>>>>> 46ab34a6c6f6302e75fdacbde3e5aab6ee3e20f8
+=======
+>>>>>>> Stashed changes
   }
 
   onFileInputChange(e: Event) {
@@ -107,6 +113,10 @@ export class ZoneEditComponent implements OnInit {
       // x.visible = Math.random() > 0.5;
       x.visible = true;
       x.index = i;
+<<<<<<< Updated upstream
+=======
+      console.log(x.geojson)
+>>>>>>> Stashed changes
       const properties = {
         properties: {
           description: x.name,
@@ -115,7 +125,11 @@ export class ZoneEditComponent implements OnInit {
           ...x.geojson.properties
         },
       };
+<<<<<<< Updated upstream
       console.log(i);
+=======
+      // console.log(properties);
+>>>>>>> Stashed changes
 
       x.geojson = { ...x.geojson, ...properties };
     });

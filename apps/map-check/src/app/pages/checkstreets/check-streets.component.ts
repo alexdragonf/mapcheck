@@ -9,14 +9,18 @@ import {
   QueryList,
   AfterViewInit,
 } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, iif, of } from 'rxjs';
 import {
   debounceTime,
   distinctUntilChanged,
   map,
+  mergeMap,
   filter,
+  switchMap
 } from 'rxjs/operators';
 import { Marker, Icon , LatLng, latLngBounds, Map, LatLngBounds, bounds} from 'leaflet';
+import { ValueConverter } from '@angular/compiler/src/render3/view/template';
+import { isUndefined } from 'util';
 
 @Component({
   selector: 'mapcheck-street',
@@ -48,8 +52,14 @@ export class CheckStreetsComponent implements OnInit, AfterViewInit {
       )
     );
 
+  onChange(event: StreetInterface) {
+    
+  }
+
   loadHouses(event: StreetInterface) {
+    console.log('loadHouses started')
     if (event) {
+      console.log(event.id)
       this.http
         .get<HouseInterface[]>(`api/house?street-id=${event.id}`)
         .subscribe(this.setHouses)
@@ -92,8 +102,11 @@ onHouseClick(i: number) {
 
   ngOnInit(): void {
     this.http
+    // TODO: street service add!!!!!
       .get<StreetInterface[]>('api/street')
       .subscribe((streets) => (this.streets = streets));
+
+  
   }
 
   ngAfterViewInit() {

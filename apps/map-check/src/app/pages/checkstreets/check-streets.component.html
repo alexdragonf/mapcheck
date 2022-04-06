@@ -10,7 +10,8 @@
                 [inputFormatter]="formatter"
                 [resultFormatter]="formatter"
                 [editable]='false'
-                (ngModelChange)=loadHouses($event)/>
+                (ngModelChange)=onChange($event)/>
+                <!-- (ngModelChange)=loadHouses($event)/> -->
             </div>
             <div class="row">
                 <div class="table-responsive" style="height: 80vh;">
@@ -42,6 +43,7 @@
             [centerMap]="centerMap" 
             [(zoomMap)]="zoomMap"
         >
+       <!-- TODO: Запомнить положение центра карты -->
         </mapcheck-map-window>
       </div>
     </div>

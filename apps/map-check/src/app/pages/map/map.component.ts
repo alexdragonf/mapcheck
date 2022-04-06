@@ -37,16 +37,19 @@ export class MapComponent implements OnInit, OnChanges {
   mapOptions: MapOptions = {
     layers: [
       new TileLayer(
-        'http://vec0{s}.maps.yandex.net/tiles?l=map&z={z}&x={x}&y={y}&scale=2&lang=ru_RU',
+        // TODO: ADD CONFIG FOR TILE SERVER
+        'http://10.43.0.18/hot/{z}/{x}/{y}.png',
+        // 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+        // 'http://vec0{s}.maps.yandex.net/tiles?l=map&z={z}&x={x}&y={y}&scale=2&lang=ru_RU',
         {
-          subdomains: '1234',
-          maxZoom: 21,
+          // subdomains: '1234',
+          maxZoom: 18,
           attribution: '...',
           minZoom: 8,
         }
       ),
     ],
-    crs: CRS.EPSG3395,
+    // crs: CRS.EPSG3395,
   };
   // 37.801682	47.991914
   @Input() layers: Layer[] = [];

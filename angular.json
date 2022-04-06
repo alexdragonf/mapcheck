@@ -70,8 +70,12 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
+<<<<<<< Updated upstream
             "host":"0.0.0.0",
             "port":80,
+=======
+            "port":3000,
+>>>>>>> Stashed changes
             "browserTarget": "map-check:build",
             "proxyConfig": "apps/map-check/proxy.conf.json",
             "host":"0.0.0.0"
